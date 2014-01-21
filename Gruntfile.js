@@ -32,7 +32,9 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     builder: {
       patch: {
-        options: {},
+        options: {
+          files: ['package.json', 'VERSION']
+        },
         files: {
           'tmp/patch/VERSION': ['test/fixtures/patch/VERSION']
         },

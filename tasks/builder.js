@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       bump: true,
-      files: ['VERSION', 'package.json']
+      files: ['package.json']
     });
 
     // Iterate over all specified file groups.
