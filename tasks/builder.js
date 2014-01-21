@@ -51,7 +51,8 @@ module.exports = function(grunt) {
 
   var bumpVersion = function(content) {
     var newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
-      return semver.inc(parsedVersion, versionType || 'patch');
+      newVersion = semver.inc(parsedVersion, versionType || 'patch');
+      return newVersion;
     });
     return newContent;
   }; 
