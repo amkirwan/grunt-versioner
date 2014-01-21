@@ -10,8 +10,11 @@
 
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  var semver = require('semver');
+  var newVersion; 
+  var versionType;
+  var versionFileRegExp = /^([\d||A-a|.|-]+)$/im;
+  var versionRegExp = /([\'|\"]?version[\'|\"]?[ ]*:[ ]*[\'|\"]?)([\d||A-a|.|-]*)([\'|\"]?)/i;
 
   grunt.registerMultiTask('builder', 'Grunt plugin for versioning, building and tagging your Git project.', function(versionType) {
     // Merge task-specific and/or target-specific options with these defaults.
@@ -34,7 +37,7 @@ module.exports = function(grunt) {
       }).map(function(filepath) {
         // Read file source.
         return grunt.file.read(filepath);
-      });
+      }).toString();
     
       content = bumpVersion(content);
 
@@ -47,6 +50,9 @@ module.exports = function(grunt) {
   });
 
   var bumpVersion = function(content) {
-    return "0.1.1";
-  };
+    var newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
+      return semver.inc(parsedVersion, versionType || 'patch');
+    });
+    return newContent;
+  }; 
 };
