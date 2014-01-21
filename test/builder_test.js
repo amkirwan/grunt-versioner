@@ -22,17 +22,17 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
+function assertFileEquality(test, pathToActual, pathToExpected, message) {
+  var actual = grunt.file.read(pathToActual);
+  var expected = grunt.file.read(pathToExpected);
+  test.equal(expected, actual, message);
+}
+
 exports.builder = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
   patch: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/patch/VERSION');
-    var expected = grunt.file.read('test/expected/patch/VERSION');
-    test.equal(actual, expected, 'patch the VERSION FILE');
+    assertFileEquality(test, 'tmp/patch/VERSION', 'test/expected/patch/VERSION', 'patch the VERSION FILE');
 
     test.done();
   }
