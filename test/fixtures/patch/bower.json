@@ -1,0 +1,21 @@
+{
+  "name": "test-patch-bower",
+  "version": "0.1.0",
+  "authors": [
+    "Anthony Kirwan <amkirwan@gmail.com>"
+  ],
+  "description": "test patch grunt build",
+  "main": "dist/ember-oauth2.js",
+  "keywords": [
+    "test-patch"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "specs"
+  ],
+}
