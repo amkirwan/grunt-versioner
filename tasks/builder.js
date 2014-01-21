@@ -50,10 +50,18 @@ module.exports = function(grunt) {
   });
 
   var bumpVersion = function(content) {
-    var newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
-      newVersion = semver.inc(parsedVersion, versionType || 'patch');
-      return newVersion;
-    });
+    var newContent;
+    if (content.match(versionFileRegExp)) {
+      newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
+        newVersion = semver.inc(parsedVersion, versionType || 'patch');
+        return newVersion;
+      });
+    } else if (content.match(versionRegExp)) {
+      newContent = content.replace(versionRegExp, function(match, prefix, parsedVersion, suffix) {
+        newVersion = semver.inc(parsedVersion, versionType || 'patch');
+        return prefix + newVersion + suffix;
+      });
+    }
     return newContent;
   }; 
 };

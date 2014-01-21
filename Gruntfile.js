@@ -36,7 +36,8 @@ module.exports = function(grunt) {
           files: ['package.json', 'VERSION']
         },
         files: {
-          'tmp/patch/VERSION': ['test/fixtures/patch/VERSION']
+          'tmp/patch/VERSION': ['test/fixtures/patch/VERSION'],
+          'tmp/patch/package.json': ['test/fixtures/patch/package.json']
         },
       }
     },
