@@ -30,11 +30,12 @@ function assertFileEquality(test, pathToActual, pathToExpected, message) {
 
 exports.builder = {
   patch: function(test) {
-    test.expect(3);
+    test.expect(4);
 
     assertFileEquality(test, 'tmp/patch/VERSION', 'test/expected/patch/VERSION', 'patch the VERSION FILE');
     assertFileEquality(test, 'tmp/patch/package.json', 'test/expected/patch/package.json', 'patch the package.json FILE');
     assertFileEquality(test, 'tmp/patch/bower.json', 'test/expected/patch/bower.json', 'patch the bower.json FILE');
+    assertFileEquality(test, 'tmp/patch/README.md', 'test/expected/patch/README.md', 'patch the README.md FILE');
 
     test.done();
   }
