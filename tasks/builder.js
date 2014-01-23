@@ -62,17 +62,17 @@ module.exports = function(grunt) {
 
   var bumpVersion = function(opts, content) {
     var newContent;
-    if (content.match(versionFileRegExp)) {
-      newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
-        return bumpIt(parsedVersion);
-      });
-    } else if (content.match(readmeRegExp)) {
+    if (content.match(readmeRegExp)) {
       newContent = content.replace(readmeRegExp, function(match, leadText, parsedVersion, urlUpToTag, versionUrl, endText,  offset, string) {
         return  leadText + bumpIt(parsedVersion) + urlUpToTag + opts.tagName.replace('%VERSION%', bumpIt(parsedVersion)) + endText;
-      });
+      });    
     } else if (content.match(versionRegExp)) {
       newContent = content.replace(versionRegExp, function(match, prefix, parsedVersion, suffix) {
         return prefix + bumpIt(parsedVersion) + suffix;
+      });
+    } else if (content.match(versionFileRegExp)) {
+      newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
+        return bumpIt(parsedVersion);
       });
     }
     return newContent;
