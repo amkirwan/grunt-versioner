@@ -45,10 +45,10 @@ module.exports = function(grunt) {
         return grunt.file.read(filepath);
       }).toString();
     
-      content = bumpVersion(options, content);
+      var updatedContent = bumpVersion(options, content);
 
       // Write the destination file.
-      grunt.file.write(f.dest, content);
+      grunt.file.write(f.dest, updatedContent);
 
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
