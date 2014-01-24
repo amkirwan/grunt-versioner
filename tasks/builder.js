@@ -21,9 +21,7 @@ module.exports = function(grunt) {
   var tagMessage;
   var commitMessage;
 
-  grunt.registerMultiTask('builder', 'Grunt plugin for versioning, building and tagging your Git project.', function(type) {
-    // set versionType
-    versionType = type || 'patch';
+  grunt.registerMultiTask('builder', 'Grunt plugin for versioning, building and tagging your Git project.', function(versionType) {
     // reset newVersion for each grunt task
     newVersion = undefined;
 
@@ -41,13 +39,17 @@ module.exports = function(grunt) {
       if (!grunt.file.exists(options.file)) {
         grunt.log.error('Version source file "' + options.file + '" not found.');
       }
+      // set versionType
+      options.versionType = options.versionType || versionType || 'patch';
+
+      // get the current version
       var version;
       if (options.file === 'package.json') {
         version = grunt.file.readJSON(options.file).version;  
       } else {
         version = grunt.file.read(options.file);
       }
-      bumpIt(version);
+      bumpIt(version, options); // set the newVersion
     })();
 
     var templateData = {
@@ -88,9 +90,9 @@ module.exports = function(grunt) {
     });
   });
 
-  var bumpIt = function(parsedVersion) {
+  var bumpIt = function(parsedVersion, opts) {
     if (newVersion === undefined) {
-      newVersion = semver.inc(parsedVersion, versionType || 'patch');
+      newVersion = semver.inc(parsedVersion, opts.versionType || 'patch');
     }
     return newVersion;
   };
