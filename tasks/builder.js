@@ -12,12 +12,17 @@ module.exports = function(grunt) {
 
   var semver = require('semver');
   var newVersion; 
-  var versionType;
   var versionFileRegExp = /^([\d||A-a|.|-]+)$/im;
   var versionRegExp = /([\'|\"]?version[\'|\"]?[ ]*:[ ]*[\'|\"]?)([\d||A-a|.|-]*)([\'|\"]?)/i;
   var readmeRegExp;  
+  var versionType;
 
-  grunt.registerMultiTask('builder', 'Grunt plugin for versioning, building and tagging your Git project.', function(versionType) {
+  grunt.registerMultiTask('builder', 'Grunt plugin for versioning, building and tagging your Git project.', function(type) {
+    // set versionType
+    versionType = type || 'patch';
+    // reset newVersion for each grunt task
+    newVersion = undefined;
+
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       bump: true,
