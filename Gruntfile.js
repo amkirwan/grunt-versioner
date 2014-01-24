@@ -32,15 +32,22 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     builder: {
       patch: {
-        options: {
-          files: ['package.json', 'VERSION']
-        },
+        options: { },
         files: {
-          'tmp/patch/VERSION': ['test/fixtures/patch/VERSION'],
-          'tmp/patch/package.json': ['test/fixtures/patch/package.json'],
-          'tmp/patch/bower.json': ['test/fixtures/patch/bower.json'],
-          'tmp/patch/README.md': ['test/fixtures/patch/README.md']
-        },
+          'tmp/patch/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/patch/package.json': ['test/fixtures/default/package.json'],
+          'tmp/patch/bower.json': ['test/fixtures/default/bower.json'],
+          'tmp/patch/README.md': ['test/fixtures/default/README.md']
+        }
+      },
+      minor: {
+        options: {},
+        files: {
+          'tmp/minor/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/minor/package.json': ['test/fixtures/default/package.json'],
+          'tmp/minor/bower.json': ['test/fixtures/default/bower.json'],
+          'tmp/minor/README.md': ['test/fixtures/default/README.md']
+        }
       }
     },
 
@@ -61,7 +68,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'builder', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'builder:patch', 'builder:minor:minor', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
