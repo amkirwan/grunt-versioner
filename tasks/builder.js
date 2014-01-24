@@ -41,7 +41,12 @@ module.exports = function(grunt) {
       if (!grunt.file.exists(options.file)) {
         grunt.log.error('Version source file "' + options.file + '" not found.');
       }
-      var version = grunt.file.read(options.file);
+      var version;
+      if (options.file === 'package.json') {
+        version = grunt.file.readJSON(options.file).version;  
+      } else {
+        version = grunt.file.read(options.file);
+      }
       bumpIt(version);
     })();
 
