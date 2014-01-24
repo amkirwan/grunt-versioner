@@ -36,14 +36,14 @@ module.exports = function(grunt) {
       commitMesage: 'Version <%= newVersion %>',
     });
 
-    var setUp = function() {
+    // setup the newVersion
+    (function() {
       if (!grunt.file.exists(options.file)) {
         grunt.log.warn('Version source file "' + options.file + '" not found.');
       }
       var version = grunt.file.read(options.file);
       bumpIt(version);
-    };
-    setUp();
+    })();
 
     var templateData = {
       data: {
