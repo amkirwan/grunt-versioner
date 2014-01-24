@@ -32,7 +32,9 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     builder: {
       patch: {
-        options: { },
+        options: { 
+          file: 'test/fixtures/default/VERSION'
+        },
         files: {
           'tmp/patch/VERSION': ['test/fixtures/default/VERSION'],
           'tmp/patch/package.json': ['test/fixtures/default/package.json'],
@@ -41,7 +43,9 @@ module.exports = function(grunt) {
         }
       },
       minor: {
-        options: {},
+        options: {
+          file: 'test/fixtures/default/VERSION'
+        },
         files: {
           'tmp/minor/VERSION': ['test/fixtures/default/VERSION'],
           'tmp/minor/package.json': ['test/fixtures/default/package.json'],
