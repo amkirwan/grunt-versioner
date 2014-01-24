@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       file: 'VERSION',
       readmeText: 'Current Version:',
       tagMessage: 'Version <%= newVersion %>',
-      commitMesage: 'Version <%= newVersion %>',
+      commitMesage: 'Version <%= newVersion %>'
     });
 
     // setup the newVersion
