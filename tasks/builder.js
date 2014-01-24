@@ -60,7 +60,9 @@ module.exports = function(grunt) {
   });
 
   var bumpIt = function(parsedVersion) {
-    newVersion = semver.inc(parsedVersion, versionType || 'patch');
+    if (newVersion === undefined) {
+      newVersion = semver.inc(parsedVersion, versionType || 'patch');
+    }
     return newVersion;
   };
 
