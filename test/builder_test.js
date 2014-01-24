@@ -40,12 +40,12 @@ exports.builder = {
     test.done();
   },
   minor: function(test) {
-    test.expect(2);
+    test.expect(4);
 
     assertFileEquality(test, 'tmp/minor/VERSION', 'test/expected/minor/VERSION', 'minor update to the VERSION FILE');
     assertFileEquality(test, 'tmp/minor/package.json', 'test/expected/minor/package.json', 'minor update to the package.json FILE');
-    // assertFileEquality(test, 'tmp/minor/bower.json', 'test/expected/minor/bower.json', 'minor update to the bower.json FILE');
-    // assertFileEquality(test, 'tmp/minor/README.md', 'test/expected/minor/README.md', 'minor update to the README.md FILE');
+    assertFileEquality(test, 'tmp/minor/bower.json', 'test/expected/minor/bower.json', 'minor update to the bower.json FILE');
+    assertFileEquality(test, 'tmp/minor/README.md', 'test/expected/minor/README.md', 'minor update to the README.md FILE');
 
     test.done();
   }
