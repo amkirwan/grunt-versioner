@@ -32,8 +32,8 @@ module.exports = function(grunt) {
       bump: true,
       file: 'package.json',
       readmeText: 'Current Version:',
-      tagMessage: 'Version <%= version %>',
-      commitMesage: 'Version <%= version %>',
+      tagMessage: 'Version <%= newVersion %>',
+      commitMesage: 'Version <%= newVersion %>',
     });
 
     var setUp = function() {
@@ -47,13 +47,14 @@ module.exports = function(grunt) {
 
     var templateData = {
       data: {
-        version: newVersion
+        newVersion: newVersion
       }
     };
 
-    options.tagName = grunt.template.process(options.tagName || 'v<%= version %>', templateData);
-    options.commitMessage = grunt.template.process(options.commitMessage || 'release <%= version %>', templateData);
-    options.tagMessage = grunt.template.process(options.commitMessage || 'version <%= version %>', templateData);
+    // replace 'version in the template'
+    options.tagName = grunt.template.process(options.tagName || 'v<%= newVersion %>', templateData);
+    options.commitMessage = grunt.template.process(options.commitMessage || 'release <%= newVersion %>', templateData);
+    options.tagMessage = grunt.template.process(options.commitMessage || 'version <%= newVersion %>', templateData);
     readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
 
     // Iterate over all specified file groups.
