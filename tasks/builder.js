@@ -30,7 +30,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       bump: true,
-      file: 'package.json',
+      file: 'VERSION',
       readmeText: 'Current Version:',
       tagMessage: 'Version <%= newVersion %>',
       commitMesage: 'Version <%= newVersion %>',
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     // setup the newVersion
     (function() {
       if (!grunt.file.exists(options.file)) {
-        grunt.log.warn('Version source file "' + options.file + '" not found.');
+        grunt.log.error('Version source file "' + options.file + '" not found.');
       }
       var version = grunt.file.read(options.file);
       bumpIt(version);
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
       var content = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
+          grunt.log.error('Source file "' + filepath + '" not found.');
           return false;
         } else {
           return true;
