@@ -33,6 +33,8 @@ module.exports = function(grunt) {
       tagMessage: 'Version <%= newVersion %>',
       commitMesage: 'Version <%= newVersion %>'
     });
+    // create readmeRegExp with option
+    readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
 
     // setup the newVersion
     (function() {
@@ -62,7 +64,6 @@ module.exports = function(grunt) {
     options.tagName = grunt.template.process(options.tagName || 'v<%= newVersion %>', templateData);
     options.commitMessage = grunt.template.process(options.commitMessage || 'release <%= newVersion %>', templateData);
     options.tagMessage = grunt.template.process(options.commitMessage || 'version <%= newVersion %>', templateData);
-    readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
