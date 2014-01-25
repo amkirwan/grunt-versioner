@@ -53,6 +53,18 @@ module.exports = function(grunt) {
           'tmp/minor/bower.json': ['test/fixtures/default/bower.json'],
           'tmp/minor/README.md': ['test/fixtures/default/README.md']
         }
+      },
+      major: {
+        options: {
+          file: 'test/fixtures/default/VERSION',
+          versionType: 'major'
+        },
+        files: {
+          'tmp/major/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/major/package.json': ['test/fixtures/default/package.json'],
+          'tmp/major/bower.json': ['test/fixtures/default/bower.json'],
+          'tmp/major/README.md': ['test/fixtures/default/README.md']
+        }
       }
     },
 
