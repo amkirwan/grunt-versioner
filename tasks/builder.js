@@ -45,12 +45,7 @@ module.exports = function(grunt) {
       options.versionType = options.versionType || versionType || 'patch';
 
       // get the current version
-      var version;
-      if (options.file === 'package.json') {
-        version = grunt.file.readJSON(options.file).version;  
-      } else {
-        version = grunt.file.read(options.file);
-      }
+      var version = (options.file === 'package.json') ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
       bumpIt(version, options); // set the newVersion
     })();
 
