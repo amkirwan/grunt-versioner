@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       bump: true,
-      file: 'VERSION',
+      file: 'package.json',
       readmeText: 'Current Version:',
       tagMessage: 'Version <%= newVersion %>',
       commitMesage: 'Version <%= newVersion %>'
