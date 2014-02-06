@@ -15,6 +15,7 @@ module.exports = function(grunt) {
   var newVersion; 
   var versionFileRegExp = /^([\d||A-a|.|-]+)$/im;
   var versionRegExp = /([\'|\"]?version[\'|\"]?[ ]*:[ ]*[\'|\"]?)([\d||A-a|.|-]*)([\'|\"]?)/i;
+  var versionSrcFileRegExp = /\s*[\'|\"]?version[\'|\"]?\s*[:|=]\s*([\d||A-a|.|-]+)/i;
   var readmeRegExp;  
   var versionType;
   var tagName;
@@ -29,6 +30,7 @@ module.exports = function(grunt) {
     var options = this.options({
       bump: true,
       file: 'package.json',
+      srcFiles: [],
       readmeText: 'Current Version:',
       tagMessage: 'Version <%= newVersion %>',
       commitMesage: 'Version <%= newVersion %>'
