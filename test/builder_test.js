@@ -37,6 +37,7 @@ exports.builder = {
       assertFileEquality(test, 'tmp/patch/package.json', 'test/expected/patch/package.json', 'patch update to the package.json file');
       assertFileEquality(test, 'tmp/patch/bower.json', 'test/expected/patch/bower.json', 'patch update to the bower.json file');
       assertFileEquality(test, 'tmp/patch/README.md', 'test/expected/patch/README.md', 'patch update to the README.md file');
+      assertFileEquality(test, 'tmp/patch/src_version', 'test/expected/patch/src_version', 'patch update to the src_version file');
 
       test.done();
     },
