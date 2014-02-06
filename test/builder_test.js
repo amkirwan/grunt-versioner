@@ -33,30 +33,30 @@ exports.builder = {
     patch: function(test) {
       test.expect(4);
 
-      assertFileEquality(test, 'tmp/patch/VERSION', 'test/expected/patch/VERSION', 'patch update to the VERSION FILE');
-      assertFileEquality(test, 'tmp/patch/package.json', 'test/expected/patch/package.json', 'patch update to the package.json FILE');
-      assertFileEquality(test, 'tmp/patch/bower.json', 'test/expected/patch/bower.json', 'patch update to the bower.json FILE');
-      assertFileEquality(test, 'tmp/patch/README.md', 'test/expected/patch/README.md', 'patch update to the README.md FILE');
+      assertFileEquality(test, 'tmp/patch/VERSION', 'test/expected/patch/VERSION', 'patch update to the VERSION file');
+      assertFileEquality(test, 'tmp/patch/package.json', 'test/expected/patch/package.json', 'patch update to the package.json file');
+      assertFileEquality(test, 'tmp/patch/bower.json', 'test/expected/patch/bower.json', 'patch update to the bower.json file');
+      assertFileEquality(test, 'tmp/patch/README.md', 'test/expected/patch/README.md', 'patch update to the README.md file');
 
       test.done();
     },
     minor: function(test) {
       test.expect(4);
 
-      assertFileEquality(test, 'tmp/minor/VERSION', 'test/expected/minor/VERSION', 'minor update to the VERSION FILE');
-      assertFileEquality(test, 'tmp/minor/package.json', 'test/expected/minor/package.json', 'minor update to the package.json FILE');
-      assertFileEquality(test, 'tmp/minor/bower.json', 'test/expected/minor/bower.json', 'minor update to the bower.json FILE');
-      assertFileEquality(test, 'tmp/minor/README.md', 'test/expected/minor/README.md', 'minor update to the README.md FILE');
+      assertFileEquality(test, 'tmp/minor/VERSION', 'test/expected/minor/VERSION', 'minor update to the VERSION file');
+      assertFileEquality(test, 'tmp/minor/package.json', 'test/expected/minor/package.json', 'minor update to the package.json file');
+      assertFileEquality(test, 'tmp/minor/bower.json', 'test/expected/minor/bower.json', 'minor update to the bower.json file');
+      assertFileEquality(test, 'tmp/minor/README.md', 'test/expected/minor/README.md', 'minor update to the README.md file');
 
       test.done();
     },
     major: function(test) {
       test.expect(4);
 
-      assertFileEquality(test, 'tmp/major/VERSION', 'test/expected/major/VERSION', 'major update to the VERSION FILE');
-      assertFileEquality(test, 'tmp/major/package.json', 'test/expected/major/package.json', 'major update to the package.json FILE');
-      assertFileEquality(test, 'tmp/major/bower.json', 'test/expected/major/bower.json', 'major update to the bower.json FILE');
-      assertFileEquality(test, 'tmp/major/README.md', 'test/expected/major/README.md', 'major update to the README.md FILE');
+      assertFileEquality(test, 'tmp/major/VERSION', 'test/expected/major/VERSION', 'major update to the VERSION file');
+      assertFileEquality(test, 'tmp/major/package.json', 'test/expected/major/package.json', 'major update to the package.json file');
+      assertFileEquality(test, 'tmp/major/bower.json', 'test/expected/major/bower.json', 'major update to the bower.json file');
+      assertFileEquality(test, 'tmp/major/README.md', 'test/expected/major/README.md', 'major update to the README.md file');
 
       test.done();
     }
