@@ -33,13 +33,14 @@ module.exports = function(grunt) {
     builder: {
       patch: {
         options: { 
-          file: 'test/fixtures/default/VERSION'
+          file: 'test/fixtures/default/package.json'
         },
         files: {
           'tmp/patch/VERSION': ['test/fixtures/default/VERSION'],
           'tmp/patch/package.json': ['test/fixtures/default/package.json'],
           'tmp/patch/bower.json': ['test/fixtures/default/bower.json'],
-          'tmp/patch/README.md': ['test/fixtures/default/README.md']
+          'tmp/patch/README.md': ['test/fixtures/default/README.md'],
+          'tmp/patch/src_file.js': ['test/fixtures/default/src_file.js']
         }
       },
       minor: {
