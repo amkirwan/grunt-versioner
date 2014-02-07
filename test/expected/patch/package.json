@@ -30,6 +30,6 @@
     "grunt": "~0.4.2"
   },
   "keywords": [
-    "test-patch",
+    "test-patch"
   ]
 }
