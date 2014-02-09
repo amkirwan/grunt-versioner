@@ -52,7 +52,8 @@ module.exports = function(grunt) {
           'tmp/minor/VERSION': ['test/fixtures/default/VERSION'],
           'tmp/minor/package.json': ['test/fixtures/default/package.json'],
           'tmp/minor/bower.json': ['test/fixtures/default/bower.json'],
-          'tmp/minor/README.md': ['test/fixtures/default/README.md']
+          'tmp/minor/README.md': ['test/fixtures/default/README.md'],
+          'tmp/minor/src_file.js': ['test/fixtures/default/src_file.js']
         }
       },
       major: {
@@ -64,7 +65,8 @@ module.exports = function(grunt) {
           'tmp/major/VERSION': ['test/fixtures/default/VERSION'],
           'tmp/major/package.json': ['test/fixtures/default/package.json'],
           'tmp/major/bower.json': ['test/fixtures/default/bower.json'],
-          'tmp/major/README.md': ['test/fixtures/default/README.md']
+          'tmp/major/README.md': ['test/fixtures/default/README.md'],
+          'tmp/major/src_file.js': ['test/fixtures/default/src_file.js']
         }
       }
     },
