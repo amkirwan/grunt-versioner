@@ -1,6 +1,6 @@
 {
   "name": "grunt-builder",
-  "description": "Grunt plugin for versioning, building and tagging your Git project."
+  "description": "Grunt plugin for versioning, building and tagging your Git project.",
   "version": "0.1.0-beta.1",
   "homepage": "https://github.com/amkirwan/grunt-builder",
   "author": {
