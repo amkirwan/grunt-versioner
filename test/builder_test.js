@@ -63,6 +63,8 @@ exports.builder = {
 
       test.done();
     },
+  },
+  setOptions: {
     setVersion: function(test) {
       test.expect(5);
 
