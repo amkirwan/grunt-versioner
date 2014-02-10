@@ -1,6 +1,6 @@
 # grunt-builder
 
-> The best Grunt plugin ever.
+> Grunt plugin for versioning, building and tagging your Git project.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
