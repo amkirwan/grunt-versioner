@@ -10,6 +10,7 @@
 
 module.exports = function(grunt) {
 
+  var shell = require('shelljs');
   var semver = require('semver');
 
   var newVersion; 
@@ -86,7 +87,15 @@ module.exports = function(grunt) {
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
     });
+
+
+    function gitAdd(file) {
+      shell.exec('git add ' + file.src);
+    }
+
   });
+
+  
 
   var bumpIt = function(parsedVersion, opts) {
     if (opts.setVersion !== undefined && newVersion === undefined) {

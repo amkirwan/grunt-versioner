@@ -27,6 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "shelljs": "*",
     "semver": "*"
   },
   "devDependencies": {
