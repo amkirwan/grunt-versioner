@@ -57,7 +57,7 @@ module.exports = function(grunt) {
       }
     };
 
-    // replace 'version in the template'
+    // replace 'newVersion in the template', and update the options message
     options.tagName = grunt.template.process(options.tagName || 'v<%= newVersion %>', templateData);
     options.commitMessage = grunt.template.process(options.commitMessage || 'release <%= newVersion %>', templateData);
     options.tagMessage = grunt.template.process(options.commitMessage || 'version <%= newVersion %>', templateData);
@@ -89,7 +89,9 @@ module.exports = function(grunt) {
   });
 
   var bumpIt = function(parsedVersion, opts) {
-    if (newVersion === undefined) {
+    if (opts.setVersion !== undefined && newVersion === undefined) {
+      newVersion = opts.setVersion;
+    } else if (newVersion === undefined) {
       newVersion = semver.inc(parsedVersion, opts.versionType || 'patch');
     }
     return newVersion;

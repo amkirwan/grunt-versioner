@@ -68,6 +68,19 @@ module.exports = function(grunt) {
           'tmp/major/README.md': ['test/fixtures/default/README.md'],
           'tmp/major/src_file.js': ['test/fixtures/default/src_file.js']
         }
+      },
+      builder_set_version: {
+        options: {
+          file: 'test/fixtures/default/VERSION',
+          setVersion: '2.0.3'
+        },
+        files: {
+          'tmp/set_version/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/set_version/package.json': ['test/fixtures/default/package.json'],
+          'tmp/set_version/bower.json': ['test/fixtures/default/bower.json'],
+          'tmp/set_version/README.md': ['test/fixtures/default/README.md'],
+          'tmp/set_version/src_file.js': ['test/fixtures/default/src_file.js']
+        }
       }
     },
 

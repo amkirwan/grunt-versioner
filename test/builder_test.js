@@ -62,6 +62,17 @@ exports.builder = {
       assertFileEquality(test, 'tmp/major/src_file.js', 'test/expected/major/src_file.js', 'major update to the src_file file');
 
       test.done();
+    },
+    setVersion: function(test) {
+      test.expect(5);
+
+      assertFileEquality(test, 'tmp/set_version/VERSION', 'test/expected/set_version/VERSION', 'setVersion update to the VERSION file');
+      assertFileEquality(test, 'tmp/set_version/package.json', 'test/expected/set_version/package.json', 'setVersion update to the package.json file');
+      assertFileEquality(test, 'tmp/set_version/bower.json', 'test/expected/set_version/bower.json', 'setVersion update to the bower.json file');
+      assertFileEquality(test, 'tmp/set_version/README.md', 'test/expected/set_version/README.md', 'setVersion update to the README.md file');
+      assertFileEquality(test, 'tmp/set_version/src_file.js', 'test/expected/set_version/src_file.js', 'setVersion update to the src_file file');
+
+      test.done();
     }
   }
 };
