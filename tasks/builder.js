@@ -19,7 +19,10 @@ module.exports = function(grunt) {
     var options = this.options({
       bump: true,
       file: 'package.json',
-      srcFiles: [],
+      gitAdd: true,
+      gitCommit: true,
+      gitPush: true,
+      gitPushTag: true,
       readmeText: 'Current Version:',
       tagMessage: 'Version <%= newVersion %>',
       commitMesage: 'Version <%= newVersion %>'
