@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       // get the current version
       // var version = grunt.file.match(options.matchBase, 'package.json') ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
       var version = (grunt.file.isMatch({matchBase: true}, '*.json', options.file)) ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
-      bumpIt(version); // set the newVersion
+      setNewVersion(version); // set the newVersion
     })();
 
     var templateData = {
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
       shell.exec('git push', 'pushed to remote');
     }
 
-    function bumpIt(parsedVersion) {
+    function setNewVersion(parsedVersion) {
       if (options.setVersion !== undefined && newVersion === undefined) {
         newVersion = options.setVersion;
       } else if (newVersion === undefined) {
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
       return newVersion;
     }
 
-    function bumpVersion(content) {
+    function updateContent(content) {
       var newContent;
       if (content.match(readmeRegExp)) {
         newContent = content.replace(readmeRegExp, function(match, leadText, parsedVersion, urlUpToTag, versionUrl, endText,  offset, string) {
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
         return grunt.file.read(filepath);
       }).toString();
     
-      var updatedContent = bumpVersion(content);
+      var updatedContent = updateContent(content);
 
       // Write the destination file.
       grunt.file.write(f.dest, updatedContent);
