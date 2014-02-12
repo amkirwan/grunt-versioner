@@ -23,7 +23,8 @@ module.exports = function(grunt) {
       gitCommit: true,
       gitPush: true,
       gitPushTag: true,
-      readmeText: 'Current Version:'
+      readmeText: 'Current Version:',
+      gitDescribeOptions: '--tags --always --dirty=-d'
     });
 
     var newVersion;
@@ -80,7 +81,10 @@ module.exports = function(grunt) {
     function setNewVersion(parsedVersion) {
       if (options.setVersion !== undefined && newVersion === undefined) {
         newVersion = options.setVersion;
+      } else if (options.versionType === 'git' && newVersion === undefined) {
+        shell.exec('git describe ' + options.gitDescribeOptions);
       } else if (newVersion === undefined) {
+        
         newVersion = semver.inc(parsedVersion, options.versionType || 'patch');
       }
       return newVersion;
