@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     var versionJSFileRegExp = /([\'|\"]?version[\'|\"]?\s*[:|=]\s*[\'|\"]?)([\d||A-a|.|-]*)([\'|\"]?)/i;
     var readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
 
-    // setup the newVersion
+    // init function setup the newVersion
     (function() {
       if (!grunt.file.exists(options.file)) {
         grunt.log.error('Version source file "' + options.file + '" not found.');
