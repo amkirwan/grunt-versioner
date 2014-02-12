@@ -23,9 +23,7 @@ module.exports = function(grunt) {
       gitCommit: true,
       gitPush: true,
       gitPushTag: true,
-      readmeText: 'Current Version:',
-      tagMessage: 'Version <%= newVersion %>',
-      commitMesage: 'Version <%= newVersion %>'
+      readmeText: 'Current Version:'
     });
 
     var newVersion;
@@ -55,8 +53,8 @@ module.exports = function(grunt) {
 
     // replace 'newVersion in the template', and update the options message
     options.tagName = grunt.template.process(options.tagName || 'v<%= newVersion %>', templateData);
-    options.commitMessage = grunt.template.process(options.commitMessage || 'release <%= newVersion %>', templateData);
-    options.tagMessage = grunt.template.process(options.commitMessage || 'version <%= newVersion %>', templateData);
+    options.commitMessage = grunt.template.process(options.commitMessage || 'Release: <%= newVersion %>', templateData);
+    options.tagMessage = (options.tagMessage || 'Version: ' + options.tagName);
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
@@ -81,10 +79,33 @@ module.exports = function(grunt) {
 
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
+
+      if (options.gitAdd) gitAdd(file);
     });
+    // git commit and push
+    if (options.gitTag) gitCommit();
+    if (options.gitTag) gitTag();
+    if (options.gitPush) gitPush();
+    if (options.gitPushTag) gitPushTag();
 
     function gitAdd(file) {
       shell.exec('git add ' + file.src);
+    }
+
+    function gitCommit() {
+      shell.exec('git commit -m' + options.commitMessage); 
+    }
+
+    function gitTag() {
+      shell.exec('git tag -a' + options.tagName + ' -m ' + options.tagMessage);
+    }
+
+    function gitPushTag() {
+      shell.exec('git push --tags ');
+    }
+
+    function gitPush() {
+      shell.exec('git push', 'pushed to remote');
     }
 
     function bumpIt(parsedVersion) {
