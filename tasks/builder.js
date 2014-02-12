@@ -56,38 +56,7 @@ module.exports = function(grunt) {
     options.commitMessage = grunt.template.process(options.commitMessage || 'Release: <%= newVersion %>', templateData);
     options.tagMessage = (options.tagMessage || 'Version: ' + options.tagName);
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var content = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.error('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).toString();
-    
-      var updatedContent = bumpVersion(content);
-
-      // Write the destination file.
-      grunt.file.write(f.dest, updatedContent);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-
-      if (options.gitAdd) gitAdd(file);
-    });
-    // git commit and push
-    if (options.gitTag) gitCommit();
-    if (options.gitTag) gitTag();
-    if (options.gitPush) gitPush();
-    if (options.gitPushTag) gitPushTag();
-
+    // git functions
     function gitAdd(file) {
       shell.exec('git add ' + file.src);
     }
@@ -133,7 +102,43 @@ module.exports = function(grunt) {
         });
       }
       return newContent;
-    } 
+    }
+
+    // Iterate over all specified file groups.
+    this.files.forEach(function(f) {
+      // Concat specified files.
+      var content = f.src.filter(function(filepath) {
+        // Warn on and remove invalid source files (if nonull was set).
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.error('Source file "' + filepath + '" not found.');
+          return false;
+        } else {
+          return true;
+        }
+      }).map(function(filepath) {
+        // Read file source.
+        return grunt.file.read(filepath);
+      }).toString();
+    
+      var updatedContent = bumpVersion(content);
+
+      // Write the destination file.
+      grunt.file.write(f.dest, updatedContent);
+
+      // Print a success message.
+      grunt.log.writeln('File "' + f.dest + '" updated.');
+
+      // if (options.gitAdd) gitAdd(file);
+      if (options.gitAdd) { 
+        gitAdd(f);
+      }
+    });
+
+    // git commit and push
+    if (options.gitTag) { gitCommit(); }
+    if (options.gitTag) { gitTag(); }
+    if (options.gitPush) { gitPush(); }
+    if (options.gitPushTag) { gitPushTag(); }
 
   });
 };
