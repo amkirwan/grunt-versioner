@@ -43,7 +43,9 @@ module.exports = function(grunt) {
       // get the current version
       // var version = grunt.file.match(options.matchBase, 'package.json') ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
       var version = (grunt.file.isMatch({matchBase: true}, '*.json', options.file)) ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
-      setNewVersion(version); // set the newVersion
+      if (options.bump) {
+        setNewVersion(version); // set the newVersion
+      }
     })();
 
     var templateData = {
