@@ -152,7 +152,7 @@ module.exports = function(grunt) {
     });
 
     // git commit and push
-    if (options.gitTag) { gitCommit(); }
+    if (options.gitCommit) { gitCommit(); }
     if (options.gitTag) { gitTag(); }
     if (options.gitPush) { gitPush(); }
     if (options.gitPushTag) { gitPushTag(); }
