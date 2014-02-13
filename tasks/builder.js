@@ -65,22 +65,27 @@ module.exports = function(grunt) {
     // git functions
     function gitAdd(file) {
       shell.exec('git add ' + file.src);
+      grunt.log.ok(file.src + ' added to git index');
     }
 
     function gitCommit() {
       shell.exec('git commit -m' + options.commitMessage); 
+      grunt.log.ok("Committed as" + options.commitMessage);
     }
 
     function gitTag() {
       shell.exec('git tag -a' + options.tagName + ' -m ' + options.tagMessage);
+      grunt.log.ok("Tagged as" + options.tagName);
     }
 
     function gitPushTag() {
-      shell.exec('git push --tags ');
+      shell.exec('git push --tags');
+      grunt.log.ok("Tagged pushed to origin"); 
     }
 
     function gitPush() {
       shell.exec('git push', 'pushed to remote');
+      grunt.log.ok("Pushed changes to origin"); 
     }
 
     function setNewVersion(parsedVersion) {
@@ -89,9 +94,9 @@ module.exports = function(grunt) {
       } else if (options.versionType === 'git' && newVersion === undefined) {
         shell.exec('git describe ' + options.gitDescribeOptions);
       } else if (newVersion === undefined) {
-        
         newVersion = semver.inc(parsedVersion, options.versionType || 'patch');
       }
+      grunt.log.ok('Version set to: ' + newVersion);
       return newVersion;
     }
 
