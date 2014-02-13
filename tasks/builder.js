@@ -128,13 +128,16 @@ module.exports = function(grunt) {
     
       var updatedContent = updateContent(content);
 
-      // Write the destination file.
-      grunt.file.write(f.dest, updatedContent);
+      // Write the destination file if set otherwise write back to the src file.
+      if (f.dest) {
+        grunt.file.write(f.dest, updatedContent);
+      } else {
+        grunt.file.write(f.src, updatedContent);
+      }
 
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" updated.');
 
-      // if (options.gitAdd) gitAdd(file);
       if (options.gitAdd) { 
         gitAdd(f);
       }
