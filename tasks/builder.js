@@ -22,9 +22,13 @@ module.exports = function(grunt) {
       gitAdd: true,
       gitCommit: true,
       gitPush: true,
+      gitTag: true,
       gitPushTag: true,
-      readmeText: 'Current Version:',
-      gitDescribeOptions: '--tags --always --dirty=-d'
+      gitDescribeOptions: '--tags --always --dirty=-d',
+      tagPrefix: 'v',
+      commitMessagePrefix: 'Release: ',
+      tagMessagePrefix: 'Version: ',
+      readmeText: 'Current Version:'
     });
 
     var newVersion;
@@ -41,7 +45,6 @@ module.exports = function(grunt) {
       options.versionType = options.versionType || versionType || 'patch';
 
       // get the current version
-      // var version = grunt.file.match(options.matchBase, 'package.json') ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
       var version = (grunt.file.isMatch({matchBase: true}, '*.json', options.file)) ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
       if (options.bump) {
         setNewVersion(version); // set the newVersion
@@ -55,9 +58,9 @@ module.exports = function(grunt) {
     };
 
     // replace 'newVersion in the template', and update the options message
-    options.tagName = grunt.template.process(options.tagName || 'v<%= newVersion %>', templateData);
-    options.commitMessage = grunt.template.process(options.commitMessage || 'Release: <%= newVersion %>', templateData);
-    options.tagMessage = (options.tagMessage || 'Version: ' + options.tagName);
+    options.tagName = grunt.template.process(options.tagName || options.tagPrefix + "<%= newVersion %>", templateData);
+    options.commitMessage = grunt.template.process(options.commitMessage || options.commitMessagePrefix + "<%= newVersion %>", templateData);
+    options.tagMessage = (options.tagMessage || options.tagMessagePrefix + options.tagName);
 
     // git functions
     function gitAdd(file) {
