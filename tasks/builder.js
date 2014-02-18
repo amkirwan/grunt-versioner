@@ -28,7 +28,8 @@ module.exports = function(grunt) {
       tagPrefix: 'v',
       commitMessagePrefix: 'Release: ',
       tagMessagePrefix: 'Version: ',
-      readmeText: 'Current Version:'
+      readmeText: 'Current Version:',
+      pushTo: 'origin'
     });
 
     var newVersion;
@@ -62,30 +63,44 @@ module.exports = function(grunt) {
     options.commitMessage = grunt.template.process(options.commitMessage || options.commitMessagePrefix + "<%= newVersion %>", templateData);
     options.tagMessage = (options.tagMessage || options.tagMessagePrefix + options.tagName);
 
+    function exec(opts) {
+      shell.exec(opts.cmd);
+      if (shell.error()) {
+        grunt.log.ok(opts.msg);
+      } else {
+        grunt.log.error(opts.errMsg);
+      }
+    }
+
     // git functions
     function gitAdd(file) {
-      shell.exec('git add ' + file.src);
-      grunt.log.ok(file.src + ' added to git index');
+      exec({cmd: 'git add ' + file.src,
+            msg: file.src + ' added to git index',
+            errMsg: 'Cannot add file ' + file.src + ' to the git index'});
     }
 
     function gitCommit() {
-      shell.exec('git commit -m' + options.commitMessage); 
-      grunt.log.ok("Committed as" + options.commitMessage);
+      exec({cmd: 'git commit -m ' + options.commitMessage, 
+            msg: "Committed as " + options.commitMessage, 
+            errMsg: 'Cannot commit changes'});
     }
 
     function gitTag() {
-      shell.exec('git tag -a' + options.tagName + ' -m ' + options.tagMessage);
-      grunt.log.ok("Tagged as" + options.tagName);
+      exec({cmd: 'git tag -a ' + options.tagName + ' -m ' + options.tagMessage,
+           msg: 'Tagged as ' + options.tagName,
+           errMsg: 'Cannot create tag ' + options.tagname});
     }
 
     function gitPushTag() {
-      shell.exec('git push --tags');
-      grunt.log.ok("Tagged pushed to origin"); 
+      exec({cmd: 'git push ' + options.pushTo + ' --tags',
+            msg: 'Tag pushed to ' + options.pushTo,
+            errMsg: 'Cannot push tag ' + options.tagName + ' to ' + options.pushTo });
     }
 
     function gitPush() {
-      shell.exec('git push', 'pushed to remote');
-      grunt.log.ok("Pushed changes to origin"); 
+      exec({cmd: 'git push ' + options.pushTo,
+            msg: 'Pushed changes to origin',
+            errMsg: 'Cannot push to ' + options.pushTo});
     }
 
     function setNewVersion(parsedVersion) {
