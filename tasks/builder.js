@@ -43,7 +43,7 @@ module.exports = function(grunt) {
         grunt.log.error('Version source file "' + options.file + '" not found.');
       }
       // set versionType
-      options.versionType = options.versionType || versionType || 'patch';
+      options.versionType = (options.versionType || versionType || 'patch');
 
       // get the current version
       var version = (grunt.file.isMatch({matchBase: true}, '*.json', options.file)) ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
