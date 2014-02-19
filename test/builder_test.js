@@ -30,6 +30,17 @@ function assertFileEquality(test, pathToActual, pathToExpected, message) {
 
 exports.builder = {
   default_build: {
+    default: function(test) {
+      test.expect(5);
+
+      assertFileEquality(test, 'tmp/default/VERSION', 'test/expected/default/VERSION', 'default update to the VERSION file');
+      assertFileEquality(test, 'tmp/default/package.json', 'test/expected/default/package.json', 'default update to the package.json file');
+      assertFileEquality(test, 'tmp/default/bower.json', 'test/expected/default/bower.json', 'default update to the bower.json file');
+      assertFileEquality(test, 'tmp/default/README.md', 'test/expected/default/README.md', 'default update to the README.md file');
+      assertFileEquality(test, 'tmp/default/src_file.js', 'test/expected/default/src_file.js', 'default update to the src_file file');
+
+      test.done();
+    },
     patch: function(test) {
       test.expect(5);
 
@@ -64,7 +75,7 @@ exports.builder = {
       test.done();
     },
   },
-  setOptions: {
+  withOptions: {
     setVersion: function(test) {
       test.expect(5);
 

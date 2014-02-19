@@ -31,9 +31,19 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     builder: {
+      default: {
+        files: {
+          'tmp/default/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/default/package.json': ['test/fixtures/default/package.json'],
+          'tmp/default/bower.json': ['test/fixtures/default/bower.json'],
+          'tmp/default/README.md': ['test/fixtures/default/README.md'],
+          'tmp/default/src_file.js': ['test/fixtures/default/src_file.js']
+        }
+      },
       patch: {
         options: { 
-          file: 'test/fixtures/default/package.json'
+          file: 'test/fixtures/default/package.json',
+          versionType: 'patch'
         },
         files: {
           'tmp/patch/VERSION': ['test/fixtures/default/VERSION'],
@@ -69,9 +79,8 @@ module.exports = function(grunt) {
           'tmp/major/src_file.js': ['test/fixtures/default/src_file.js']
         }
       },
-      builder_set_version: {
+      setVersion: {
         options: {
-          file: 'test/fixtures/default/VERSION',
           setVersion: '2.0.3'
         },
         files: {
