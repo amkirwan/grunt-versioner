@@ -153,7 +153,7 @@ $ grunt builder:git
 If you want to jump to an exact version, you can use the ```setversion``` tag in the command line.
 
 ```
-$ grunt builder --setversion=2.0.1
+$ grunt builder --setVersion=2.0.1
 >> Version bumped to 2.0.1
 >> Committed as "Release v2.0.1"
 >> Tagged as "v2.0.1"
