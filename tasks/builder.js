@@ -29,7 +29,8 @@ module.exports = function(grunt) {
       commitMessagePrefix: 'Release: ',
       tagMessagePrefix: 'Version: ',
       readmeText: 'Current Version:',
-      pushTo: 'origin'
+      pushTo: 'origin',
+      branch: 'master'
     });
 
     var newVersion;
@@ -98,9 +99,9 @@ module.exports = function(grunt) {
     }
 
     function gitPush() {
-      exec({cmd: 'git push ' + options.pushTo,
-            msg: 'Pushed changes to origin',
-            errMsg: 'Cannot push to ' + options.pushTo});
+      exec({cmd: 'git push ' + options.pushTo + ' ' + options.branch,
+            msg: 'Pushed changes to remote ' + options.pushTo + ' and branch ' + options.branch,
+            errMsg: 'Cannot push to remote ' + options.pushTo + ' and branch ' + options.branch});
     }
 
     function setNewVersion(parsedVersion) {
