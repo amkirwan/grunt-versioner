@@ -59,10 +59,15 @@ module.exports = function(grunt) {
       }
     };
 
+    function formatMessage(msg) {
+      return '"' + msg + '"';
+    }
+
     // replace 'newVersion in the template', and update the options message
     options.tagName = grunt.template.process(options.tagName || options.tagPrefix + "<%= newVersion %>", templateData);
-    options.commitMessage = grunt.template.process(options.commitMessage || options.commitMessagePrefix + "<%= newVersion %>", templateData);
-    options.tagMessage = (options.tagMessage || options.tagMessagePrefix + options.tagName);
+    options.commitMessage = formatMessage(grunt.template.process(options.commitMessage || options.commitMessagePrefix + "<%= newVersion %>", templateData));
+    options.tagMessage = formatMessage((options.tagMessage || options.tagMessagePrefix + options.tagName));
+
 
     function exec(opts) {
       shell.exec(opts.cmd);
