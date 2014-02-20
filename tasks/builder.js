@@ -67,9 +67,9 @@ module.exports = function(grunt) {
     function exec(opts) {
       shell.exec(opts.cmd);
       if (shell.error()) {
-        grunt.log.ok(opts.msg);
-      } else {
         grunt.log.error(opts.errMsg);
+      } else {
+        grunt.log.ok(opts.msg);
       }
     }
 
