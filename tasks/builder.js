@@ -179,8 +179,8 @@ module.exports = function(grunt) {
 
     // git commit and push
     if (options.gitCommit) { gitCommit(); }
-    if (options.gitTag) { gitTag(); }
     if (options.gitPush) { gitPush(); }
+    if (options.gitTag) { gitTag(); }
     if (options.gitPushTag) { gitPushTag(); }
 
   });
