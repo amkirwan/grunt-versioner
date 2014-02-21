@@ -30,7 +30,8 @@ module.exports = function(grunt) {
       tagMessagePrefix: 'Version: ',
       readmeText: 'Current Version:',
       pushTo: 'origin',
-      branch: 'master'
+      branch: 'master',
+      mode: 'production'
     });
 
     var newVersion;
@@ -70,11 +71,15 @@ module.exports = function(grunt) {
 
 
     function exec(opts) {
-      shell.exec(opts.cmd);
-      if (shell.error()) {
-        grunt.log.error(opts.errMsg);
+      if (options.mode === 'production') {
+        shell.exec(opts.cmd);
+        if (shell.error()) {
+          grunt.log.error(opts.errMsg);
+        } else {
+          grunt.log.ok(opts.msg);
+        }
       } else {
-        grunt.log.ok(opts.msg);
+        grunt.log.ok('git cmd: ' + opts.cmd);
       }
     }
 

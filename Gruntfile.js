@@ -12,6 +12,7 @@ module.exports = function(grunt) {
 
   grunt.file.defaultEncoding = 'utf-8';
   // Project configuration.
+  
   grunt.initConfig({
     jshint: {
       all: [
@@ -31,6 +32,7 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     builder: {
+      options: { mode: 'test' },
       default: {
         files: {
           'tmp/default/VERSION': ['test/fixtures/default/VERSION'],
