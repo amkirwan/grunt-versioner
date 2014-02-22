@@ -99,7 +99,7 @@ module.exports = function(grunt) {
     function gitTag() {
       exec({cmd: 'git tag -a ' + options.tagName + ' -m ' + options.tagMessage,
            msg: 'Tagged as ' + options.tagName,
-           errMsg: 'Cannot create tag ' + options.tagname});
+           errMsg: 'Cannot create tag ' + options.tagName});
     }
 
     function gitPushTag() {
