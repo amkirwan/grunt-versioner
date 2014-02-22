@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 
     var newVersion;
     var versionFileRegExp = /^([\d||A-a|.|-]+)$/im;
-    var versionJSFileRegExp = /([\'|\"]?version[\'|\"]?\s*[:|=]\s*[\'|\"]?)([\d||A-a|.|-]*)([\'|\"]?)/i;
+    var versionJSFileRegExp = /([\'|\"]?version[\'|\"]?\s*[:|=]\s*[\'|\"]?)(\d[\d||A-a|.|-]*)([\'|\"]?)/i;
     var readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
 
     // init function setup the newVersion
