@@ -118,7 +118,8 @@ module.exports = function(grunt) {
       if (options.setVersion !== undefined && newVersion === undefined) {
         newVersion = options.setVersion;
       } else if (options.versionType === 'git' && newVersion === undefined) {
-        shell.exec('git describe ' + options.gitDescribeOptions);
+        var gitDescribe = shell.exec('git describe ' + options.gitDescribeOptions).output;
+        newVersion = parsedVersion + '-' + gitDescribe;
       } else if (newVersion === undefined) {
         newVersion = semver.inc(parsedVersion, options.versionType || 'patch');
       }

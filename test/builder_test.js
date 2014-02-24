@@ -54,6 +54,13 @@ exports.builder = {
 
       test.done();
     },
+    git: function(test) {
+      test.expect(1);
+
+      assertFileEquality(test, 'tmp/git/VERSION', 'test/expected/git/VERSION', 'git update to the VERSION file');
+      
+      test.done();
+    }
   },
   withOptions: {
     setVersion: function(test) {
