@@ -23,7 +23,7 @@ grunt.loadNpmTasks('grunt-builder');
 
 In your project's Gruntfile, add a section named `builder` to the data object passed into `grunt.initConfig()`.
 
-This shows all of the configuration options and their default values. Individual settings can be given for the different versioning types patch, minor, major and git. The files section is where to put the files you would like the script to update. 
+This shows all of the configuration options and their default values. Individual settings can be given for the different versioning types patch, minor, major and git. The files section is where to put the files you would like the script to update.  Most users will only need to create a default task.
 
 ```js
 grunt.initConfig({
@@ -42,15 +42,17 @@ grunt.initConfig({
       tagMessagePrefix: 'Version: ',
       readmeText: 'Current Version:'
     },
-    files: {
-      './package.json': ['./package.json'],
-      './bower.json': ['./bower.json'],
-      './README.md': ['./README.md'],
-      './src/lib/src_file.js': ['./src/lib/src_file.js']
-    }
+    default {
+      files: {
+        './package.json': ['./package.json'],
+        './bower.json': ['./bower.json'],
+        './README.md': ['./README.md'],
+        './src/lib/src_file.js': ['./src/lib/src_file.js']
+      }
+    },
     patch: {
       options: {
-        file: 'VERSION'
+        file: './VERSION'
       },
       src: ['./package.json', './bower.json', './README.md']
     }
@@ -64,86 +66,34 @@ When including a README.md file to update the script looks for a line like the o
 Current Version: **[1.0.0](https://github.com/amkirwan/grunt-build/releases/tag/v1.0.0)**
 ```
 
-
-### Options
-
-#### options.bump - When grunt builder is run the files will be bumped. 
-Type: `Boolean`
-Default value: `true`
-
-#### options.file - File that is read to current the current Version from. This should either be a json file in the format of package.json or bower.json with the version property or it can be VERSION file that only contains the version.
-Type: `String`
-Default value: `package.json`
-
-#### options.gitAdd - The files that are bumped will be add to the git index.
-Type: `Boolean`
-Default value: `true`
-
-#### options.gitCommit - The files will added to the git index will be committed. 
-Type: `Boolean`
-Default value: `true`
-
-#### options.gitPush - The changes commited will be pushed to git origin.
-Type: `Boolean`
-Default value: `true`
-
-#### options.gitTag - Create tag of the latest version.
-Type: `Boolean`
-Default value: `true`
-
-#### options.gitPushTag - The tag created for the new version will be pushed to the git origin.
-Type: `Boolean`
-Default value: `true`
-
-#### options.gitDescribeOptions - Options passed to git describe when using to create a version tag.
-Type: `String`
-Default: `gitDescribeOptions: '--tags --always --dirty=-d'`
- 
-#### options.readmeText - If updating version information in your README.md file. This is the text before the version information. 
-Type: `String`
-Default value `Current Version:`
-
-#### options.tagPrefix - Prefix text before your git tag.
-Type: `String`
-Default value `v`
-
-#### options.commitMessagePrefix - Prefix text before your commit message. The default full message is `Release: 0.2.2`
-Type: `String`
-Default value `Release: `
-
-#### options.tagMessagePrefix - Prefix for the git annotayted tags. The default full message will be `Version: 0.2.2`
-Type: `String`
-Default value `Message: `
-
-
 ### Usage Examples
 
 ```bash
-$ grunt builder
+$ grunt builder:default
 >> Version bumped to 0.0.2
 >> Committed as "Release v0.0.2"
 >> Tagged as "v0.0.2"
 >> Pushed to origin
 
-$ grunt builder:patch
+$ grunt builder:default:bump
 >> Version bumped to 0.0.3
 >> Committed as "Release v0.0.3"
 >> Tagged as "v0.0.3"
 >> Pushed to origin
 
-$ grunt builder:minor
+$ grunt builder:default:minor
 >> Version bumped to 0.1.0
 >> Committed as "Release v0.1.0"
 >> Tagged as "v0.1.0"
 >> Pushed to origin
 
-$ grunt builder:major
+$ grunt builder:default:major
 >> Version bumped to 1.0.0
 >> Committed as "Release v1.0.0"
 >> Tagged as "v1.0.0"
 >> Pushed to origin
 
-$ grunt builder:git
+$ grunt builder:default:git
 >> Version bumped to 1.0.0-1-ge96c
 >> Committed as "Release v1.0.0-1-ge96c"
 >> Tagged as "v1.0.0-1-ge96c"
@@ -160,17 +110,72 @@ $ grunt builder --setVersion=2.0.1
 >> Pushed to origin
 ```
 
+### Options
+
+##### options.bump - When grunt builder is run the files will be bumped. 
+Type: `Boolean`
+Default value: `true`
+
+##### options.file - File that is read to current the current Version from. This should either be a json file in the format of package.json or bower.json with the version property or it can be VERSION file that only contains the version.
+Type: `String`
+Default value: `package.json`
+
+##### options.gitAdd - The files that are bumped will be add to the git index.
+Type: `Boolean`
+Default value: `true`
+
+##### options.gitCommit - The files will added to the git index will be committed. 
+Type: `Boolean`
+Default value: `true`
+
+##### options.gitPush - The changes commited will be pushed to git origin.
+Type: `Boolean`
+Default value: `true`
+
+##### options.gitTag - Create tag of the latest version.
+Type: `Boolean`
+Default value: `true`
+
+##### options.pushTo - Remote repo to push to
+Type: `String`
+Default value: `origin`
+
+##### options.gitPushTag - The tag created for the new version will be pushed to the git origin.
+Type: `Boolean`
+Default value: `true`
+
+##### options.branch - The git branch to push the changes.
+Type: `String`
+Default value: `master`
+
+##### options.gitDescribeOptions - Options passed to git describe when using to create a version tag.
+Type: `String`
+Default: `gitDescribeOptions: '--tags --always --dirty=-d'`
+ 
+##### options.readmeText - If updating version information in your README.md file. This is the text before the version information. 
+Type: `String`
+Default value `Current Version:`
+
+##### options.tagPrefix - Prefix text before your git tag.
+Type: `String`
+Default value `v`
+
+##### options.commitMessagePrefix - Prefix text before your commit message. The default full message is `Release: 0.2.2`.
+Type: `String`
+Default value `Release: `
+
+##### options.tagMessagePrefix - Prefix for the git annotayted tags. The default full message will be `Version: 0.2.2`.
+Type: `String`
+Default value `Message: `
+
+##### options.mode - Mode that it should run in. The accepted values are `test` and `production`. The should only be switched to `test` when running the tests. This prints out what commands git would have run in produciton.
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
 
-      tagPrefix: 'v',
-      commitMessagePrefix: 'Release: ',
-      tagMessagePrefix: 'Version: ',
-
-### Usage Examples
+0.1.0-beta.1
 
 #### Default Options
 In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
@@ -190,4 +195,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+0.1.0-beta.1
