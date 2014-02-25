@@ -1,23 +1,23 @@
 {
-  "name": "grunt-builder",
+  "name": "grunt-versioner",
   "description": "Grunt plugin for versioning, building and tagging your Git project.",
   "version": "0.1.0-beta.1",
-  "homepage": "https://github.com/amkirwan/grunt-builder",
+  "homepage": "https://github.com/amkirwan/grunt-versioner",
   "author": {
     "name": "Anthony Kirwan",
     "email": "amkirwan@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/amkirwan/grunt-builder.git"
+    "url": "git://github.com/amkirwan/grunt-versioner.git"
   },
   "bugs": {
-    "url": "https://github.com/amkirwan/grunt-builder/issues"
+    "url": "https://github.com/amkirwan/grunt-versioner/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/amkirwan/grunt-builder/blob/master/LICENSE-MIT"
+      "url": "https://github.com/amkirwan/grunt-versioner/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
@@ -42,7 +42,7 @@
   "keywords": [
     "gruntplugin",
     "git",
-    "builder",
+    "versioner",
     "versioning",
     "semver",
     "release",

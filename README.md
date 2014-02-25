@@ -1,4 +1,4 @@
-# grunt-builder
+# grunt-versioner
 
 > Grunt plugin for versioning, building and tagging your Git project.
 
@@ -8,26 +8,26 @@ This plugin requires Grunt `~0.4.2`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-builder --save-dev
+npm install grunt-versioner --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-builder');
+grunt.loadNpmTasks('grunt-versioner');
 ```
 
-## The "builder" task
+## The "versioner" task
 
 ### Overview
 
-In your project's Gruntfile, add a section named `builder` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `versioner` to the data object passed into `grunt.initConfig()`.
 
 This shows all of the configuration options and their default values. Individual settings can be given for the different versioning types patch, minor, major and git. The files section is where to put the files you would like the script to update.  Most users will only need to create a default task.
 
 ```js
 grunt.initConfig({
-  builder: {
+  versioner: {
     options: {
       bump: true,
       file: 'package.json',
@@ -69,31 +69,31 @@ Current Version: **[1.0.0](https://github.com/amkirwan/grunt-build/releases/tag/
 ### Usage Examples
 
 ```bash
-$ grunt builder:default
+$ grunt versioner:default
 >> Version bumped to 0.0.2
 >> Committed as "Release v0.0.2"
 >> Tagged as "v0.0.2"
 >> Pushed to origin
 
-$ grunt builder:default:bump
+$ grunt versioner:default:bump
 >> Version bumped to 0.0.3
 >> Committed as "Release v0.0.3"
 >> Tagged as "v0.0.3"
 >> Pushed to origin
 
-$ grunt builder:default:minor
+$ grunt versioner:default:minor
 >> Version bumped to 0.1.0
 >> Committed as "Release v0.1.0"
 >> Tagged as "v0.1.0"
 >> Pushed to origin
 
-$ grunt builder:default:major
+$ grunt versioner:default:major
 >> Version bumped to 1.0.0
 >> Committed as "Release v1.0.0"
 >> Tagged as "v1.0.0"
 >> Pushed to origin
 
-$ grunt builder:default:git
+$ grunt versioner:default:git
 >> Version bumped to 1.0.0-1-ge96c
 >> Committed as "Release v1.0.0-1-ge96c"
 >> Tagged as "v1.0.0-1-ge96c"
@@ -103,7 +103,7 @@ $ grunt builder:default:git
 If you want to jump to an exact version, you can use the ```setversion``` tag in the command line.
 
 ```
-$ grunt builder --setVersion=2.0.1
+$ grunt versioner --setVersion=2.0.1
 >> Version bumped to 2.0.1
 >> Committed as "Release v2.0.1"
 >> Tagged as "v2.0.1"
@@ -112,7 +112,7 @@ $ grunt builder --setVersion=2.0.1
 
 ### Options
 
-##### options.bump - When grunt builder is run the files will be bumped. 
+##### options.bump - When grunt versioner is run the files will be bumped. 
 Type: `Boolean`
 Default value: `true`
 

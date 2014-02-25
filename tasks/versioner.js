@@ -1,6 +1,6 @@
 /*
- * grunt-builder
- * https://github.com/amkirwan/grunt-builder
+ * grunt-versioner
+ * https://github.com/amkirwan/grunt-versioner
  *
  * Copyright (c) 2014 Anthony Kirwan
  * Licensed under the MIT license.
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   var shell = require('shelljs');
   var semver = require('semver');
 
-  grunt.registerMultiTask('builder', 'Grunt plugin for versioning, building and tagging your Git project.', function(versionType) {
+  grunt.registerMultiTask('versioner', 'Grunt plugin for versioning, building and tagging your Git project.', function(versionType) {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({

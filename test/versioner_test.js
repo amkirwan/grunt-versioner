@@ -8,7 +8,7 @@ function assertFileEquality(test, pathToActual, pathToExpected, message) {
   test.equal(expected, actual, message);
 }
 
-exports.builder = {
+exports.versioner = {
   default_build: {
     default: function(test) {
       test.expect(5);
