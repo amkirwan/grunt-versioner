@@ -116,67 +116,82 @@ $ grunt versioner --setVersion=2.0.1
 
 ### Options
 
-##### options.bump - When grunt versioner is run the files will be bumped. 
+**options.bump** - When grunt versioner is run the files will be bumped. 
+
 Type: `Boolean`
 Default value: `true`
 
-##### options.file - File that is read to current the current Version from. This should either be a json file in the format of package.json or bower.json with the version property or it can be VERSION file that only contains the version.
+**options.file** - File that is read to current the current Version from. This should either be a json file in the format of package.json or bower.json with the version property or it can be VERSION file that only contains the version.
+
 Type: `String`
 Default value: `package.json`
 
-##### options.gitAdd - The files that are bumped will be add to the git index.
+**options.gitAdd** - The files that are bumped will be add to the git index.
+
 Type: `Boolean`
 Default value: `true`
 
-##### options.gitCommit - The files will added to the git index will be committed. 
+**options.gitCommit** - The files will added to the git index will be committed. 
+
 Type: `Boolean`
 Default value: `true`
 
-##### options.gitPush - The changes commited will be pushed to git origin.
+**options.gitPush** - The changes commited will be pushed to git origin.
+
 Type: `Boolean`
 Default value: `true`
 
-##### options.gitTag - Create tag of the latest version.
+**options.gitTag** - Create tag of the latest version.
+
 Type: `Boolean`
 Default value: `true`
 
-##### options.pushTo - Remote repo to push to
+**options.pushTo** - Remote repo to push to
+
 Type: `String`
 Default value: `origin`
 
-##### options.gitPushTag - The tag created for the new version will be pushed to the git origin.
+**options.gitPushTag** - The tag created for the new version will be pushed to the git origin.
+
 Type: `Boolean`
 Default value: `true`
 
-##### options.branch - The git branch to push the changes.
+**options.branch** - The git branch to push the changes.
+
 Type: `String`
 Default value: `master`
 
-##### options.npm - Publish to NPM.
+**options.npm** - Publish to NPM.
+
 Type: `boolean`
 Default value: `true`
 
-##### options.gitDescribeOptions - Options passed to git describe when using to create a version tag.
+**options.gitDescribeOptions** - Options passed to git describe when using to create a version tag.
+
 Type: `String`
 Default: `gitDescribeOptions: '--tags --always --dirty=-d'`
  
-##### options.readmeText - If updating version information in your README.md file. This is the text before the version information. 
+**options.readmeText** - If updating version information in your README.md file. This is the text before the version information. 
+
 Type: `String`
 Default value `Current Version:`
 
-##### options.tagPrefix - Prefix text before your git tag.
+**options.tagPrefix** - Prefix text before your git tag.
+
 Type: `String`
 Default value `v`
 
-##### options.commitMessagePrefix - Prefix text before your commit message. The default full message is `Release: 0.2.2`.
+**options.commitMessagePrefix** - Prefix text before your commit message. The default full message is `Release: 0.2.2`.
+
 Type: `String`
 Default value `Release: `
 
-##### options.tagMessagePrefix - Prefix for the git annotayted tags. The default full message will be `Version: 0.2.2`.
+**options.tagMessagePrefix** - Prefix for the git annotayted tags. The default full message will be `Version: 0.2.2`.
+
 Type: `String`
 Default value `Message: `
 
-##### options.mode - Mode that it should run in. The accepted values are `test` and `production`. The should only be switched to `test` when running the tests. This prints out what commands git would have run in produciton.
+**options.mode** - Mode that it should run in. The accepted values are `test` and `production`. The should only be switched to `test` when running the tests. This prints out what commands git would have run in produciton.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
