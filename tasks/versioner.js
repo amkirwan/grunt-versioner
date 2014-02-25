@@ -13,7 +13,7 @@ module.exports = function(grunt) {
   var shell = require('shelljs');
   var semver = require('semver');
 
-  grunt.registerMultiTask('versioner', 'Grunt plugin for versioning, building and tagging your Git project.', function(versionType) {
+  grunt.registerMultiTask('versioner', 'Grunt plugin for versioning, building, tagging your Git project and publishing to NPM.', function(versionType) {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
@@ -31,6 +31,7 @@ module.exports = function(grunt) {
       readmeText: 'Current Version:',
       pushTo: 'origin',
       branch: 'master',
+      npm: true,
       mode: 'production'
     });
 
@@ -114,6 +115,12 @@ module.exports = function(grunt) {
             errMsg: 'Cannot push to remote ' + options.pushTo + ' and branch ' + options.branch});
     }
 
+    function publishToNpm() {
+      exec({cmd: 'npm publish --tag ' + newVersion,
+            msg: 'Published ' + newVersion + ' to NPM.',
+            errMsg: 'Cannot publish ' + newVersion + ' to NPM.' });
+    }
+
     function setNewVersion(parsedVersion) {
       if (options.setVersion !== undefined && newVersion === undefined) {
         newVersion = options.setVersion;
@@ -183,6 +190,7 @@ module.exports = function(grunt) {
     if (options.gitPush) { gitPush(); }
     if (options.gitTag) { gitTag(); }
     if (options.gitPushTag) { gitPushTag(); }
+    if (options.npm) { publishToNpm(); }
 
   });
 };

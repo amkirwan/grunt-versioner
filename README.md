@@ -40,7 +40,11 @@ grunt.initConfig({
       tagPrefix: 'v',
       commitMessagePrefix: 'Release: ',
       tagMessagePrefix: 'Version: ',
-      readmeText: 'Current Version:'
+      readmeText: 'Current Version:',
+      pushTo: 'origin',
+      branch: 'master',
+      npm: true,
+      mode: 'production'
     },
     default {
       files: {
@@ -147,6 +151,10 @@ Default value: `true`
 ##### options.branch - The git branch to push the changes.
 Type: `String`
 Default value: `master`
+
+##### options.npm - Publish to NPM.
+Type: `boolean`
+Default value: `true`
 
 ##### options.gitDescribeOptions - Options passed to git describe when using to create a version tag.
 Type: `String`
