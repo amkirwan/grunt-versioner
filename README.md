@@ -207,6 +207,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+0.1.0-beta.4
+
+[bugfix] set newVersion to package.json version if bump set to false
+
 0.1.0-beta.3
 
 [bugfix] removed whtie space from git describe output
