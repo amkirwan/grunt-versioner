@@ -50,9 +50,7 @@ module.exports = function(grunt) {
 
       // get the current version
       var version = (grunt.file.isMatch({matchBase: true}, '*.json', options.file)) ? grunt.file.readJSON(options.file).version : grunt.file.read(options.file);
-      if (options.bump) {
-        setNewVersion(version); // set the newVersion
-      }
+      setNewVersion(version); // set the newVersion
     })();
 
     var templateData = {
@@ -122,6 +120,10 @@ module.exports = function(grunt) {
     }
 
     function setNewVersion(parsedVersion) {
+      if (!options.bump) {
+        return (newVersion = parsedVersion);
+      }
+
       if (options.setVersion !== undefined && newVersion === undefined) {
         newVersion = options.setVersion;
       } else if (options.versionType === 'git' && newVersion === undefined) {
