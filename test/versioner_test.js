@@ -55,9 +55,10 @@ exports.versioner = {
       test.done();
     },
     git: function(test) {
-      test.expect(1);
+      test.expect(2);
 
       assertFileEquality(test, 'tmp/git/VERSION', 'test/expected/git/VERSION', 'git update to the VERSION file');
+      assertFileEquality(test, 'tmp/git/package.json', 'test/expected/git/package.json', 'git update to the package.json file');
       
       test.done();
     }

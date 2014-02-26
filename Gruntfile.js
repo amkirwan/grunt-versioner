@@ -82,9 +82,12 @@ module.exports = function(grunt) {
         }
       },
       git: {
-        options: { versionType: 'git' },
+        options: { 
+          versionType: 'git'
+        },
         files: {
           'tmp/git/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/git/package.json': ['test/fixtures/default/package.json'],
         }
       },
       setVersion: {

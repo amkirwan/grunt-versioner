@@ -126,7 +126,11 @@ module.exports = function(grunt) {
         newVersion = options.setVersion;
       } else if (options.versionType === 'git' && newVersion === undefined) {
         var gitDescribe = shell.exec('git describe ' + options.gitDescribeOptions).output;
-        newVersion = gitDescribe.substr(1, gitDescribe.length - 1);
+        if (options.tagPrefix.length >= '1') {
+          newVersion = gitDescribe.substr(1, gitDescribe.length - 1).replace(/(\r\n|\n|\r)/gm,"");
+        } else {
+          newVersion = gitDescribe.replace(/(\r\n|\n|\r)/gm,"");
+        }
       } else if (newVersion === undefined) {
         newVersion = semver.inc(parsedVersion, options.versionType || 'patch');
       }
