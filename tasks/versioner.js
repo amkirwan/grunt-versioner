@@ -126,7 +126,7 @@ module.exports = function(grunt) {
         newVersion = options.setVersion;
       } else if (options.versionType === 'git' && newVersion === undefined) {
         var gitDescribe = shell.exec('git describe ' + options.gitDescribeOptions).output;
-        newVersion = parsedVersion + '-' + gitDescribe;
+        newVersion = gitDescribe.substr(1, gitDescribe.length - 1);
       } else if (newVersion === undefined) {
         newVersion = semver.inc(parsedVersion, options.versionType || 'patch');
       }
