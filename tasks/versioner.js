@@ -111,8 +111,8 @@ module.exports = function(grunt) {
 
     function gitPush() {
       exec({cmd: 'git push ' + options.pushTo + ' ' + options.branch,
-            msg: 'Pushed changes to remote ' + options.pushTo + ' and branch ' + options.branch,
-            errMsg: 'Cannot push to remote ' + options.pushTo + ' and branch ' + options.branch});
+            msg: 'Pushed changes to remote ' + options.pushTo + ' branch ' + options.branch,
+            errMsg: 'Cannot push to remote ' + options.pushTo + ' branch ' + options.branch});
     }
 
     function publishToNpm() {
