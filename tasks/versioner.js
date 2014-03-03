@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       readmeText: 'Current Version:',
       pushTo: 'origin',
       branch: 'master',
-      npm: true,
+      npm: false,
       mode: 'production'
     });
 
