@@ -185,18 +185,36 @@ module.exports = function(grunt) {
 
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" updated.');
-
-      if (options.gitAdd) { 
-        gitAdd(f);
-      }
     });
 
     // git commit and push
-    if (options.gitCommit) { gitCommit(); }
-    if (options.gitPush) { gitPush(); }
+    if (options.gitAdd) { gitAdd(); }
+    if (options.gitAdd && options.gitCommit) { gitCommit(); }
+    if (options.gitCommit && options.gitPush) { gitPush(); }
     if (options.gitTag) { gitTag(); }
-    if (options.gitPushTag) { gitPushTag(); }
+    if (options.gitTag && options.gitPushTag) { gitPushTag(); }
     if (options.npm) { publishToNpm(); }
 
   });
+
+  // grunt.registerTask('versioner:bump', 'Increment the version only.', function(task, versionType) {
+  //   grunt.option('gitCommit', true);
+  //   grunt.option('gitPush', false);
+  //   grunt.option('gitTag', false);
+  //   grunt.option('gitPushTag', false);
+  //   grunt.option('publishToNpm', false);
+  //   grunt.task.run('versioner:' + task + ':' + (versionType || '')); 
+  // });
+
+
+  // grunt.registerTask('versioner:commit', 'commit the version only.', function(versionType) {
+  //   grunt.option('gitCommit', true);
+  //   grunt.option('gitPush', false);
+  //   grunt.option('gitTag', false);
+  //   grunt.option('gitPushTag', false);
+  //   grunt.option('publishToNpm', false);
+  //   grunt.task.run('versioner:' + (versionType || '')); 
+  // });
+
+
 };
