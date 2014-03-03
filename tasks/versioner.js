@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 
     // git functions
     function gitAdd(file) {
-      exec({cmd: 'git add ' + file.src,
+      exec({cmd: 'git add -A', 
             msg: file.src + ' added to git index',
             errMsg: 'Cannot add file ' + file.src + ' to the git index'});
     }
