@@ -197,24 +197,25 @@ module.exports = function(grunt) {
 
   });
 
-  // grunt.registerTask('versioner:bump', 'Increment the version only.', function(task, versionType) {
-  //   grunt.option('gitCommit', true);
-  //   grunt.option('gitPush', false);
-  //   grunt.option('gitTag', false);
-  //   grunt.option('gitPushTag', false);
-  //   grunt.option('publishToNpm', false);
-  //   grunt.task.run('versioner:' + task + ':' + (versionType || '')); 
-  // });
+  grunt.registerTask('versioner:bump', 'Increment the version only.', function(task, versionType) {
+    grunt.option('bump', true);
+    grunt.option('gitCommit', true);
+    grunt.option('gitPush', false);
+    grunt.option('gitTag', false);
+    grunt.option('gitPushTag', false);
+    grunt.option('publishToNpm', false);
+    grunt.task.run('versioner:' + task + ':' + (versionType || '')); 
+  });
 
 
-  // grunt.registerTask('versioner:commit', 'commit the version only.', function(versionType) {
-  //   grunt.option('gitCommit', true);
-  //   grunt.option('gitPush', false);
-  //   grunt.option('gitTag', false);
-  //   grunt.option('gitPushTag', false);
-  //   grunt.option('publishToNpm', false);
-  //   grunt.task.run('versioner:' + (versionType || '')); 
-  // });
+  grunt.registerTask('versioner:commit', 'Commit, tag and push to remote.', function(task) {
+    grunt.option('bump', false);
+    grunt.option('gitCommit', true);
+    grunt.option('gitPush', true);
+    grunt.option('gitTag', true);
+    grunt.option('gitPushTag', true);
+    grunt.task.run('versioner:' + task);
+  });
 
 
 };
