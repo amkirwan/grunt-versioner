@@ -200,17 +200,15 @@ module.exports = function(grunt) {
         return grunt.file.read(filepath);
       }).toString();
     
-      var updatedContent = updateContent(content);
+      if (options.bump) {
+        var updatedContent = updateContent(content);
 
-      // Write the destination file if set otherwise write back to the src file.
-      if (f.dest) {
+        // Write the destination file 
         grunt.file.write(f.dest, updatedContent);
-      } else {
-        grunt.file.write(f.src, updatedContent);
-      }
 
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" updated.');
+        // Print a success message.
+        grunt.log.writeln('File "' + f.dest + '" updated.');
+      }
     });
 
     // git commit and push
