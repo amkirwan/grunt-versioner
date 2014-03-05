@@ -106,12 +106,21 @@ $ grunt versioner:default:git
 
 If you want to jump to an exact version, you can use the ```setversion``` tag in the command line.
 
-```
+```bash
 $ grunt versioner --setVersion=2.0.1
 >> Version bumped to 2.0.1
 >> Committed as "Release v2.0.1"
 >> Tagged as "v2.0.1"
 >> Pushed to origin
+```
+
+If you need to run another task between bumping the version and commiting you can use the tasks `versioner:bumpOnly`, `versioner:commitOnly`, and `versioner:npmOnly`
+
+```bash
+$ grunt versioner:bumpOnly:default:minor
+$ grunt uglify
+$ grunt versioner:commitOnly:default
+$ grunt versioner:npmOnly:default
 ```
 
 ### Options
@@ -206,6 +215,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
+0.1.0-beta.5
+
+Added tasks bumpOnly, commitOnly and npmOnly
 
 0.1.0-beta.4
 
