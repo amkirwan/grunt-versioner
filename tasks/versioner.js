@@ -40,6 +40,32 @@ module.exports = function(grunt) {
     var versionJSFileRegExp = /([\'|\"]?version[\'|\"]?\s*[:|=]\s*[\'|\"]?)(\d[\d||A-a|.|-]*)([\'|\"]?)/i;
     var readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
 
+    if (grunt.option('bumpOnly') === true) {
+      options.bump = true;
+      options.gitAdd = false;
+      options.gitCommit = false;
+      options.gitPush = false;
+      options.gitTag = false;
+      options.gitPushTag = false;
+      options.npm = false;
+    } else if (grunt.option('commitOnly') === true) {
+      options.bump = false;
+      options.gitAdd = true;
+      options.gitCommit = true;
+      options.gitPush = true;
+      options.gitTag = true;
+      options.gitPushTag = true;
+      options.npm = false;
+    } else if (grunt.option('npmOnly') === true) {
+      options.bump = false;
+      options.gitAdd = false;
+      options.gitCommit = true;
+      options.gitPush = false;
+      options.gitTag = false;
+      options.gitPushTag = false;
+      options.npm = true;
+    }
+
     // init function setup the newVersion
     (function() {
       if (!grunt.file.exists(options.file)) {
@@ -197,25 +223,26 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('versioner:bump', 'Increment the version only.', function(task, versionType) {
-    grunt.option('bump', true);
-    grunt.option('gitCommit', true);
-    grunt.option('gitPush', false);
-    grunt.option('gitTag', false);
-    grunt.option('gitPushTag', false);
-    grunt.option('publishToNpm', false);
+  grunt.registerTask('versioner:bumpOnly', 'Increment the version only.', function(task, versionType) {
+    grunt.option('bumpOnly', true);
+    grunt.option('commitOnly', false);
+    grunt.option('npmOnly', false);
     grunt.task.run('versioner:' + task + ':' + (versionType || '')); 
   });
 
 
-  grunt.registerTask('versioner:commit', 'Commit, tag and push to remote.', function(task) {
-    grunt.option('bump', false);
-    grunt.option('gitCommit', true);
-    grunt.option('gitPush', true);
-    grunt.option('gitTag', true);
-    grunt.option('gitPushTag', true);
+  grunt.registerTask('versioner:commitOnly', 'Commit, tag and push to remote.', function(task) {
+    grunt.option('commitOnly', true);
+    grunt.option('bumpOnly', false);
+    grunt.option('npmOnly', false);
     grunt.task.run('versioner:' + task);
   });
 
+  grunt.registerTask('versioner:npmOnly', 'Commit, tag and push to remote.', function(task) {
+    grunt.option('npmOnly', true);
+    grunt.option('bumpOnly', false);
+    grunt.option('commitOnly', false);
+    grunt.task.run('versioner:' + task);
+  });
 
 };
