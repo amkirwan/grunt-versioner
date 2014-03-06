@@ -81,15 +81,6 @@ module.exports = function(grunt) {
           'tmp/major/src_file.js': ['test/fixtures/default/src_file.js']
         }
       },
-      git: {
-        options: { 
-          versionType: 'git'
-        },
-        files: {
-          'tmp/git/VERSION': ['test/fixtures/default/VERSION'],
-          'tmp/git/package.json': ['test/fixtures/default/package.json'],
-        }
-      },
       setVersion: {
         options: {
           setVersion: '2.0.3'
