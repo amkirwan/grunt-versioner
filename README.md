@@ -2,6 +2,8 @@
 
 > Grunt plugin for versioning, building and tagging your Git project.
 
+Current Version: [0.1.0](https://github.com/amkirwan/grunt-versioner/releases/v0.1.0)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
 
