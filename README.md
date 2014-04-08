@@ -210,29 +210,3 @@ Default value `Message: `
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-
-0.1.0-beta.2
-
-0.1.0-beta.1
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-
-0.1.0-beta.5
-
-Added tasks bumpOnly, commitOnly and npmOnly
-
-0.1.0-beta.4
-
-[bugfix] set newVersion to package.json version if bump set to false
-
-0.1.0-beta.3
-
-[bugfix] removed whtie space from git describe output
-
-0.1.0-beta.2
-
-0.1.0-beta.1
