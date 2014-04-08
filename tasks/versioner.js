@@ -39,6 +39,7 @@ module.exports = function(grunt) {
     var versionFileRegExp = /^([\d||A-a|.|-]+)$/im;
     var versionJSFileRegExp = /([\'|\"]?version[\'|\"]?\s*[:|=]\s*[\'|\"]?)(\d[\d||A-a|.|-]*)([\'|\"]?)/i;
     var readmeRegExp = new RegExp("(^" + options.readmeText + ".*\\[)([\\d|.|\\-|a-z]+)(\\].*\\/)([\\d|.|\\-|a-z]+)(\\).*)", "img");
+    var yuidocRegExp = /(\*\s*@version\s+)([\d||A-a|.|-]+)(.*)/im;
 
     if (grunt.option('bumpOnly') === true) {
       options.bump = true;
@@ -175,6 +176,9 @@ module.exports = function(grunt) {
       } else if (content.match(versionJSFileRegExp)) {
         newContent = content.replace(versionJSFileRegExp, function(match, prefix, parsedVersion, suffix) {
           return prefix + newVersion + suffix;
+        });
+        newContent = newContent.replace(yuidocRegExp, function(match, prefix, parsedVersion) {
+          return prefix + newVersion;
         });
       } else if (content.match(versionFileRegExp)) {
         newContent = content.replace(versionFileRegExp, function(match, parsedVersion) {
