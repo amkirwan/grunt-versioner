@@ -68,9 +68,12 @@ grunt.initConfig({
 
 When including a README.md file to update the script looks for a line like the one below to update the both the version link and url. This way your README.md file will maintain a link to your latests release.
 
+
 ```
 Current Version: **[1.0.2](https://github.com/amkirwan/grunt-build/releases/tag/v1.0.2)**
 ```
+
+Additionally any files with YUIdoc style version tags `* @version 1.0.2` will be updated to the latest version as well if the files are included in the `files` configuration.
 
 ### Usage Examples
 
