@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+tmp
+*.swp
+.DS_Store
+
+tmp/
+test/
+Gruntfile.js
+README.md
+.jshintrc
