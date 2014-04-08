@@ -2,7 +2,7 @@
 
 > Grunt plugin for versioning, building and tagging your Git project.
 
-Current Version: [0.1.1](https://github.com/amkirwan/grunt-versioner/releases/v0.1.1)
+Current Version: [0.1.2](https://github.com/amkirwan/grunt-versioner/releases/v0.1.2)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
@@ -69,7 +69,7 @@ grunt.initConfig({
 When including a README.md file to update the script looks for a line like the one below to update the both the version link and url. This way your README.md file will maintain a link to your latests release.
 
 ```
-Current Version: **[1.0.0](https://github.com/amkirwan/grunt-build/releases/tag/v1.0.0)**
+Current Version: **[1.0.2](https://github.com/amkirwan/grunt-build/releases/tag/v1.0.2)**
 ```
 
 ### Usage Examples
