@@ -32,7 +32,10 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     versioner: {
-      options: { mode: 'test' },
+      options: { 
+        file: 'test/fixtures/default/package.json',
+         mode: 'test' 
+      },
       default: {
         files: {
           'tmp/default/VERSION': ['test/fixtures/default/VERSION'],
