@@ -62,7 +62,7 @@ module.exports = function(grunt) {
     } else if (grunt.option('npmOnly') === true) {
       options.bump = false;
       options.gitAdd = false;
-      options.gitCommit = true;
+      options.gitCommit = false;
       options.gitPush = false;
       options.gitTag = false;
       options.gitPushTag = false;
