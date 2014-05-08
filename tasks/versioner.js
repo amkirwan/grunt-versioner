@@ -37,6 +37,7 @@ module.exports = function(grunt) {
       mode: 'production'
     });
 
+    var pkgName;
     var newVersion;
     var versionFileRegExp = /^([\d||A-a|.|-]+)$/im;
     var versionJSFileRegExp = /([\'|\"]?version[\'|\"]?\s*[:|=]\s*[\'|\"]?)(\d[\d||A-a|.|-]*)([\'|\"]?)/i;
@@ -74,6 +75,10 @@ module.exports = function(grunt) {
       if (!grunt.file.exists(options.file)) {
         grunt.log.error('Version source file "' + options.file + '" not found.');
       }
+
+      // set pkgName
+      pkgName = grunt.file.readJSON('package.json').name;
+
       // set versionType
       options.versionType = (options.versionType || versionType || 'patch');
 
@@ -143,9 +148,13 @@ module.exports = function(grunt) {
     }
 
     function publishToNpm() {
+      var pkgLatest = pkgName + '@' + newVersion
       exec({cmd: 'npm publish --tag ' + newVersion,
-            msg: 'Published ' + newVersion + ' to NPM.',
-            errMsg: 'Cannot publish ' + newVersion + ' to NPM.' });
+            msg: 'Published ' + pkgLatest + ' to NPM.',
+            errMsg: 'Cannot publish ' + pkgLatest + ' to NPM.' });
+      exec({cmd: 'npm tag ' + pkgLatest + ' latest',
+            msg: 'Set npm registry latest version to: ' + pkgLatest, 
+            errMsg: 'Cannot set npm registry latest version to: ' + pkgLatest });
     }
 
     function setNewVersion(parsedVersion) {

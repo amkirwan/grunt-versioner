@@ -86,7 +86,8 @@ module.exports = function(grunt) {
       },
       setVersion: {
         options: {
-          setVersion: '2.0.3'
+          setVersion: '2.0.3',
+          npm: true
         },
         files: {
           'tmp/set_version/VERSION': ['test/fixtures/default/VERSION'],
