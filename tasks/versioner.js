@@ -242,7 +242,7 @@ module.exports = function(grunt) {
     grunt.task.run('versioner:' + task);
   });
 
-  grunt.registerTask('versioner:npmOnly', 'Commit, tag and push to remote.', function(task) {
+  grunt.registerTask('versioner:npmOnly', 'Publish latest version to npm only.', function(task) {
     grunt.option('npmOnly', true);
     grunt.option('bumpOnly', false);
     grunt.option('commitOnly', false);
