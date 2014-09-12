@@ -118,14 +118,14 @@ module.exports = function(grunt) {
 
     // git functions
     function gitAdd() {
-      exec({cmd: 'git add -A', 
+      exec({cmd: 'git add -A',
             msg: 'Added files to the git index',
             errMsg: 'Cannot add files to the git index'});
     }
 
     function gitCommit() {
-      exec({cmd: 'git commit -m ' + options.commitMessage, 
-            msg: "Committed as " + options.commitMessage, 
+      exec({cmd: 'git commit -m ' + options.commitMessage,
+            msg: "Committed as " + options.commitMessage,
             errMsg: 'Cannot commit changes'});
     }
 
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
             msg: 'Published ' + pkgLatest + ' to NPM.',
             errMsg: 'Cannot publish ' + pkgLatest + ' to NPM.' });
       exec({cmd: 'npm tag ' + pkgLatest + ' latest',
-            msg: 'Set npm registry latest version to: ' + pkgLatest, 
+            msg: 'Set npm registry latest version to: ' + pkgLatest,
             errMsg: 'Cannot set npm registry latest version to: ' + pkgLatest });
     }
 
@@ -171,6 +171,9 @@ module.exports = function(grunt) {
         } else {
           newVersion = gitDescribe.replace(/(\r\n|\n|\r)/gm,"");
         }
+      } else if (options.versionType === 'gitrev' && newVersion === undefined) {
+        var gitRev = shell.exec('git rev-parse --short HEAD').output;
+        newVersion = parsedVersion + '-' + gitRev.replace(/(\r\n|\n|\r)/gm,'');
       } else if (newVersion === undefined) {
         newVersion = semver.inc(parsedVersion, options.versionType || 'patch');
       }
@@ -183,7 +186,7 @@ module.exports = function(grunt) {
       if (content.match(readmeRegExp)) {
         newContent = content.replace(readmeRegExp, function(match, leadText, parsedVersion, urlUpToTag, versionUrl, endText,  offset, string) {
           return  leadText + newVersion + urlUpToTag + options.tagName + endText;
-        });    
+        });
       } else if (content.match(versionJSFileRegExp)) {
         newContent = content.replace(versionJSFileRegExp, function(match, prefix, parsedVersion, suffix) {
           return prefix + newVersion + suffix;
@@ -214,11 +217,11 @@ module.exports = function(grunt) {
         // Read file source.
         return grunt.file.read(filepath);
       }).toString();
-    
+
       if (options.bump) {
         var updatedContent = updateContent(content);
 
-        // Write the destination file 
+        // Write the destination file
         grunt.file.write(f.dest, updatedContent);
 
         // Print a success message.
@@ -240,7 +243,7 @@ module.exports = function(grunt) {
     grunt.option('bumpOnly', true);
     grunt.option('commitOnly', false);
     grunt.option('npmOnly', false);
-    grunt.task.run('versioner:' + task + ':' + (versionType || '')); 
+    grunt.task.run('versioner:' + task + ':' + (versionType || ''));
   });
 
 
