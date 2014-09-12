@@ -107,6 +107,12 @@ $ grunt versioner:default:git
 >> Committed as "Release v1.0.0-1-ge96c"
 >> Tagged as "v1.0.0-1-ge96c"
 >> Pushed to origin
+
+$ grunt versioner:default:gitrev
+>> Version bumped to ca40b1c
+>> Committed as "Release ca40b1c"
+>> Tagged as "ca40b1c"
+>> Pushed to origin
 ```
 
 If you want to jump to an exact version, you can use the ```setversion``` tag in the command line.
