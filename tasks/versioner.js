@@ -231,7 +231,7 @@ module.exports = function(grunt) {
     });
     
     if (options.configs.length) {
-      this.options.configs.forEach(function(configProp) {
+      options.configs.forEach(function(configProp) {
         var cfg = grunt.config(configProp);
         cfg.version = newVersion;
         grunt.config(configProp, cfg);
