@@ -219,6 +219,15 @@ Default value `[]: `
 
 **options.configs** - When you load package.json into a grunt config variable such as `pkg` that needs to have the version updated as the grunt process runs. Adding any vars here such as `pkg` will update any `version` keys on those config properties so that the correct version is used when using `pkg.version` in your tasks.
 
+```
+versioner: {
+  options: {
+    bump: true,
+    configs: ['pkg']
+  }
+}
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
