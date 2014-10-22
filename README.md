@@ -46,7 +46,8 @@ grunt.initConfig({
       pushTo: 'origin',
       branch: 'master',
       npm: true,
-      mode: 'production'
+      mode: 'production',
+      configs: []
     },
     default {
       files: {
@@ -212,6 +213,11 @@ Type: `String`
 Default value `Message: `
 
 **options.mode** - Mode that it should run in. The accepted values are `test` and `production`. The should only be switched to `test` when running the tests. This prints out what commands git would have run in produciton.
+
+Type: `Array`
+Default value `[]: `
+
+**options.configs** - When you load package.json into a grunt config variable such as `pkg` that needs to have the version updated as the grunt process runs. Adding any vars here such as `pkg` will update any `version` keys on those config properties so that the correct version is used when using `pkg.version` in your tasks.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

@@ -34,7 +34,8 @@ module.exports = function(grunt) {
       pushTo: 'origin',
       branch: 'master',
       npm: false,
-      mode: 'production'
+      mode: 'production',
+      configs: []
     });
 
     var pkgName;
@@ -228,6 +229,14 @@ module.exports = function(grunt) {
         grunt.log.writeln('File "' + f.dest + '" updated.');
       }
     });
+    
+    if (options.configs.length) {
+      this.options.configs.forEach(function(configProp) {
+        var cfg = grunt.config(configProp);
+        cfg.version = newVersion;
+        grunt.config(configProp, cfg);
+      });
+    }
 
     // git commit and push
     if (options.gitAdd) { gitAdd(); }
