@@ -113,7 +113,7 @@ module.exports = function(grunt) {
           grunt.log.ok(opts.msg);
         }
       } else {
-        grunt.log.ok('git cmd: ' + opts.cmd);
+        grunt.log.ok('cmd: ' + opts.cmd);
       }
     }
 
