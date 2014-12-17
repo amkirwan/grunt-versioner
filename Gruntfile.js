@@ -87,6 +87,20 @@ module.exports = function(grunt) {
       setVersion: {
         options: {
           setVersion: '2.0.3',
+          npmTag: 'v2.0-latest',
+          npm: true
+        },
+        files: {
+          'tmp/set_version/VERSION': ['test/fixtures/default/VERSION'],
+          'tmp/set_version/package.json': ['test/fixtures/default/package.json'],
+          'tmp/set_version/bower.json': ['test/fixtures/default/bower.json'],
+          'tmp/set_version/README.md': ['test/fixtures/default/README.md'],
+          'tmp/set_version/src_file.js': ['test/fixtures/default/src_file.js']
+        }
+      },
+      noNpmTag: {
+        options: {
+          setVersion: '2.0.3',
           npm: true
         },
         files: {
