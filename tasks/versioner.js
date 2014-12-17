@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Anthony Kirwan
  * Licensed under the MIT license.
  *
- * @version 0.1.6
+ * @version 0.1.7
  */
 
 'use strict';
