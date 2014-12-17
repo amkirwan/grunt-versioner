@@ -150,9 +150,13 @@ module.exports = function(grunt) {
 
     function publishToNpm() {
       var pkgLatest = pkgName + '@' + newVersion;
-      exec({cmd: 'npm publish --tag ' + pkgLatest,
+      var pubCmd;
+      pubCmd = options.npmTag ? 'npm publish --tag ' + options.npmTag : 'npm publish';
+
+      exec({cmd: pubCmd,
             msg: 'Published ' + pkgLatest + ' to NPM.',
             errMsg: 'Cannot publish ' + pkgLatest + ' to NPM.' });
+
       exec({cmd: 'npm tag ' + pkgLatest + ' latest',
             msg: 'Set npm registry latest version to: ' + pkgLatest,
             errMsg: 'Cannot set npm registry latest version to: ' + pkgLatest });
