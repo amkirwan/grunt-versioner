@@ -2,7 +2,7 @@
 
 > Grunt plugin for versioning, building and tagging your Git project.
 
-Current Version: [0.1.6](https://github.com/amkirwan/grunt-versioner/releases/v0.1.6)
+Current Version: [0.1.7](https://github.com/amkirwan/grunt-versioner/releases/v0.1.7)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
@@ -128,11 +128,17 @@ $ grunt versioner --setVersion=2.0.1
 
 If you need to run another task between bumping the version and commiting you can use the tasks `versioner:bumpOnly`, `versioner:commitOnly`, and `versioner:npmOnly`
 
-```bash
+```
 $ grunt versioner:bumpOnly:default:minor
 $ grunt uglify
 $ grunt versioner:commitOnly:default
 $ grunt versioner:npmOnly:default
+```
+
+To publish your project to NPM and to set a tag. Setting an `npmTag` is not required. A tag name should not be SemVer range.
+
+```
+$ grunt versioner:npmOnly:default --npmTag v1.2-latest
 ```
 
 ### Options
