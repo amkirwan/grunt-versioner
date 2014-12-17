@@ -149,8 +149,8 @@ module.exports = function(grunt) {
     }
 
     function publishToNpm() {
-      var pkgLatest = pkgName + '@' + newVersion
-      exec({cmd: 'npm publish --tag ' + newVersion,
+      var pkgLatest = pkgName + '@' + newVersion;
+      exec({cmd: 'npm publish --tag ' + options.tagName,
             msg: 'Published ' + pkgLatest + ' to NPM.',
             errMsg: 'Cannot publish ' + pkgLatest + ' to NPM.' });
       exec({cmd: 'npm tag ' + pkgLatest + ' latest',
