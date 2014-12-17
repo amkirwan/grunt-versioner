@@ -14,5 +14,5 @@
   "eqeqeq": true,
   "eqnull": true,
   "undef": true,
-  "latedef: true
+  "latedef": true
 }
