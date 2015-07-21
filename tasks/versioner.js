@@ -2,7 +2,7 @@
  * grunt-versioner
  * https://github.com/amkirwan/grunt-versioner
  *
- * Copyright (c) 2014 Anthony Kirwan
+ * Copyright (c) 2015 Anthony Kirwan
  * Licensed under the MIT license.
  *
  * @version 0.1.7
