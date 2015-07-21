@@ -4,6 +4,8 @@
 
 Current Version: [0.1.7](https://github.com/amkirwan/grunt-versioner/releases/v0.1.7)
 
+[![Circle CI](https://circleci.com/gh/amkirwan/grunt-versioner.svg?style=svg)](https://circleci.com/gh/amkirwan/grunt-versioner)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
 
