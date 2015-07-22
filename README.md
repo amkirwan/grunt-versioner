@@ -2,7 +2,7 @@
 
 > Grunt plugin for versioning, building and tagging your Git project.
 
-Current Version: [0.1.9](https://github.com/amkirwan/grunt-versioner/releases/v0.1.9)
+Current Version: [0.1.10](https://github.com/amkirwan/grunt-versioner/releases/v0.1.10)
 
 [![Circle CI](https://circleci.com/gh/amkirwan/grunt-versioner.svg?style=svg)](https://circleci.com/gh/amkirwan/grunt-versioner)
 
