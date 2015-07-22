@@ -156,10 +156,6 @@ module.exports = function(grunt) {
       exec({cmd: pubCmd,
             msg: 'Published ' + pkgLatest + ' to NPM.',
             errMsg: 'Cannot publish ' + pkgLatest + ' to NPM.' });
-
-      exec({cmd: 'npm dist-tag add ' + pkgLatest, 
-            msg: 'Set npm registry latest version to: ' + pkgLatest,
-            errMsg: 'Cannot set npm registry latest version to: ' + pkgLatest });
     }
 
     function setNewVersion(parsedVersion) {
